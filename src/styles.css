@@ -1,0 +1,81 @@
+/* Official PNG colours; supporting light surfaces are design choices. */
+:root {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--navy);
+  background: var(--white);
+  font-synthesis: none;
+  --navy: #09043a;
+  --indigo: #19137a;
+  --white: #ffffff;
+  --mist: #f2f3f9;
+  --muted: #53566c;
+  --line: #d7dae7;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { display: block; max-width: 100%; height: auto; }
+figure, p { margin: 0; }
+a { color: var(--indigo); text-underline-offset: 6px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid var(--indigo); outline-offset: 5px; border-radius: 2px; }
+.container { width: 90%; max-width: 1280px; margin-inline: auto; }
+.skip-link { position: absolute; top: -100px; left: 16px; padding: 16px; background: white; z-index: 2; }
+.skip-link:focus { top: 12px; }
+.site-header { background: var(--white); border-bottom: 1px solid var(--line); }
+.header-inner { min-height: 106px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.brand { flex-shrink: 0; }
+.brand img { width: 168px; }
+nav { display: flex; gap: 32px; }
+nav a { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; font-size: 15px; font-weight: 600; }
+.header-location { font-size: 13px; line-height: 1.6; }
+.header-location span { color: var(--muted); }
+.hero { background: var(--mist); padding-top: clamp(48px, 6vw, 88px); }
+.hero-grid { display: grid; grid-template-columns: .95fr 1.15fr; align-items: center; gap: clamp(32px, 4vw, 64px); }
+.hero-copy { min-width: 0; }
+.club-intro { font-size: 14px; color: var(--indigo); font-weight: 600; margin-bottom: 24px; }
+h1, h2 { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-weight: 650; margin: 0; letter-spacing: -.055em; }
+h1 { font-size: clamp(56px, 6.5vw, 92px); line-height: 1.03; }
+.hero-description { font-size: clamp(22px, 2.2vw, 29px); line-height: 1.35; font-weight: 500; margin-top: 28px; letter-spacing: -.02em; }
+.body-copy { font-size: 17px; line-height: 1.7; color: var(--muted); max-width: 48ch; }
+.hero-copy > .body-copy { margin-top: 16px; }
+.future-actions { display: flex; gap: 30px; margin-top: 32px; }
+.future-actions p { display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+.future-actions span { color: var(--muted); font-size: 12px; }
+.drone-photo { min-width: 0; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 12px 35px #09043a0b; }
+.drone-photo img { width: 100%; }
+.drone-photo figcaption { padding: 23px 26px; border-top: 4px solid var(--indigo); display: flex; flex-direction: column; gap: 8px; font-size: 15px; }
+.drone-photo figcaption span { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.hero-footnote { margin-top: 56px; padding-block: 23px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: 13px; }
+.hero-footnote a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; }
+.community { padding-block: clamp(56px, 7vw, 96px); scroll-margin-top: 24px; }
+.community-heading { display: grid; grid-template-columns: 1fr .8fr; align-items: end; gap: 64px; margin-bottom: 40px; }
+.section-label { font-size: 15px; color: var(--indigo); margin-bottom: 16px; font-weight: 600; }
+h2 { font-size: clamp(38px, 4.4vw, 60px); line-height: 1.08; }
+.community-photo img { width: 100%; border-radius: 10px; }
+.community-photo figcaption { display: flex; justify-content: space-between; gap: 24px; padding-top: 20px; font-size: 14px; line-height: 1.6; }
+.community-photo figcaption span { color: var(--muted); }
+.site-footer { background: var(--navy); color: var(--white); }
+.footer-inner { padding-block: 30px; display: flex; justify-content: space-between; gap: 32px; align-items: center; }
+.footer-inner strong { font-size: 16px; }
+.footer-inner p { color: #e0e1ed; font-size: 13px; line-height: 1.6; max-width: 52ch; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-copy > .body-copy { max-width: 58ch; }
+  h1 { font-size: clamp(56px, 9vw, 80px); }
+  .community-heading { gap: 32px; grid-template-columns: 1fr 1fr; }
+  .header-location { display: none; }
+}
+@media (max-width: 600px) {
+  .header-inner { min-height: auto; padding-block: 18px; flex-wrap: wrap; gap: 12px; }
+  .brand img { width: 150px; }
+  nav { width: 100%; gap: 28px; }
+  .club-intro { font-size: 12px; }
+  h1 { font-size: clamp(48px, 13vw, 72px); }
+  .body-copy { font-size: 16px; }
+  .hero-description { margin-top: 24px; }
+  .hero-footnote { margin-top: 32px; align-items: flex-start; flex-direction: column; gap: 4px; }
+  .community-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 28px; }
+  .community-photo figcaption, .footer-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .drone-photo figcaption { padding: 20px; }
+}
+

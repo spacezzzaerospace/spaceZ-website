@@ -1,0 +1,40 @@
+# Public source allowlist. New files require deliberate review before inclusion.
+# Everything else remains local, including internal documentation and credentials.
+/*
+!/.gitignore
+!/README.md
+!/index.html
+!/package.json
+!/pnpm-lock.yaml
+!/pnpm-workspace.yaml
+!/tsconfig.json
+!/src/
+/src/*
+!/src/App.tsx
+!/src/main.tsx
+!/src/styles.css
+!/public/
+/public/*
+!/public/assets/
+/public/assets/*
+!/public/assets/spacez-official-wordmark.png
+!/public/assets/spacez-drone-640.webp
+!/public/assets/spacez-drone-1280.webp
+!/public/assets/spacez-community-480.webp
+!/public/assets/spacez-community-960.webp
+!/public/assets/spacez-community-1600.webp
+
+# Defence in depth for common sensitive or generated files at any depth.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+node_modules/
+dist/
+.local/
+.codex/
+.agents/
+.aws/
