@@ -1,13 +1,16 @@
-function Navigation() {
+import ProjectsPage from './ProjectsPage';
+
+function Navigation({ isProjects }: { isProjects: boolean }) {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <a className="brand" href="#home" aria-label="SpaceZ Aerospace home">
+        <a className="brand" href="/" aria-label="SpaceZ Aerospace home">
           <img src="/assets/spacez-official-wordmark.png" alt="SpaceZ Aerospace" width="629" height="240" />
         </a>
         <nav aria-label="Main navigation">
-          <a href="#home">Home</a>
-          <a href="#community">Our community</a>
+          <a href="/" aria-current={!isProjects ? 'page' : undefined}>Home</a>
+          <a href="/projects/" aria-current={isProjects ? 'page' : undefined}>Projects</a>
+          <a href="/#community">Our community</a>
         </nav>
         <span className="header-location">York University<br /><span>Toronto, Canada</span></span>
       </div>
@@ -25,7 +28,7 @@ function Hero() {
           <p className="hero-description">Aerospace ideas.<br />Real hands-on experience.</p>
           <p className="body-copy">We’re York University students learning to design, build and test unmanned aircraft—starting with FPV drones.</p>
           <div className="future-actions" aria-label="Upcoming website features">
-            <p><strong>Explore Projects</strong><span>Coming soon</span></p>
+            <a className="projects-cta" href="/projects/">Explore Projects</a>
             <p><strong>Join SpaceZ</strong><span>Coming soon</span></p>
           </div>
         </div>
@@ -57,12 +60,13 @@ function Community() {
 }
 
 export default function App() {
+  const isProjects = /^\/projects(?:\/|\/index\.html)?$/.test(window.location.pathname);
   return (
     <>
-      <a className="skip-link" href="#home">Skip to main content</a>
-      <Navigation />
-      <main id="home" tabIndex={-1}><Hero /><Community /></main>
-      <footer className="site-footer"><div className="container footer-inner"><strong>SpaceZ Aerospace</strong><p>Homepage preview. Project details and joining information are being prepared.</p></div></footer>
+      <a className="skip-link" href={isProjects ? '#main-content' : '#home'}>Skip to main content</a>
+      <Navigation isProjects={isProjects} />
+      <main id={isProjects ? 'main-content' : 'home'} tabIndex={-1}>{isProjects ? <ProjectsPage /> : <><Hero /><Community /></>}</main>
+      <footer className="site-footer"><div className="container footer-inner"><strong>SpaceZ Aerospace</strong><p>Student-led engineering at York University. Joining information is being prepared.</p></div></footer>
     </>
   );
 }

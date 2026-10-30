@@ -13,6 +13,13 @@
 !/src/App.tsx
 !/src/main.tsx
 !/src/styles.css
+!/src/projects.ts
+!/src/ProjectSection.tsx
+!/src/ProjectsPage.tsx
+!/vite.config.js
+!/projects/
+/projects/*
+!/projects/index.html
 !/public/
 /public/*
 !/public/assets/
