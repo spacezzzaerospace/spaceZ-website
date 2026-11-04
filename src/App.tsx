@@ -1,6 +1,9 @@
 import ProjectsPage from './ProjectsPage';
+import AboutPage from './AboutPage';
 
-function Navigation({ isProjects }: { isProjects: boolean }) {
+type Page = 'home' | 'projects' | 'about';
+
+function Navigation({ page }: { page: Page }) {
   return (
     <header className="site-header">
       <div className="container header-inner">
@@ -8,8 +11,9 @@ function Navigation({ isProjects }: { isProjects: boolean }) {
           <img src="/assets/spacez-official-wordmark.png" alt="SpaceZ Aerospace" width="629" height="240" />
         </a>
         <nav aria-label="Main navigation">
-          <a href="/" aria-current={!isProjects ? 'page' : undefined}>Home</a>
-          <a href="/projects/" aria-current={isProjects ? 'page' : undefined}>Projects</a>
+          <a href="/" aria-current={page === 'home' ? 'page' : undefined}>Home</a>
+          <a href="/projects/" aria-current={page === 'projects' ? 'page' : undefined}>Projects</a>
+          <a href="/about/" aria-current={page === 'about' ? 'page' : undefined}>About</a>
           <a href="/#community">Our community</a>
         </nav>
         <span className="header-location">York University<br /><span>Toronto, Canada</span></span>
@@ -60,12 +64,15 @@ function Community() {
 }
 
 export default function App() {
-  const isProjects = /^\/projects(?:\/|\/index\.html)?$/.test(window.location.pathname);
+  const path = window.location.pathname;
+  const page: Page = /^\/projects(?:\/|\/index\.html)?$/.test(path) ? 'projects'
+    : /^\/about(?:\/|\/index\.html)?$/.test(path) ? 'about' : 'home';
+  const mainId = page === 'home' ? 'home' : 'main-content';
   return (
     <>
-      <a className="skip-link" href={isProjects ? '#main-content' : '#home'}>Skip to main content</a>
-      <Navigation isProjects={isProjects} />
-      <main id={isProjects ? 'main-content' : 'home'} tabIndex={-1}>{isProjects ? <ProjectsPage /> : <><Hero /><Community /></>}</main>
+      <a className="skip-link" href={`#${mainId}`}>Skip to main content</a>
+      <Navigation page={page} />
+      <main id={mainId} tabIndex={-1}>{page === 'projects' ? <ProjectsPage /> : page === 'about' ? <AboutPage /> : <><Hero /><Community /></>}</main>
       <footer className="site-footer"><div className="container footer-inner"><strong>SpaceZ Aerospace</strong><p>Student-led engineering at York University. Joining information is being prepared.</p></div></footer>
     </>
   );
