@@ -16,6 +16,11 @@
 !/src/projects.ts
 !/src/ProjectSection.tsx
 !/src/ProjectsPage.tsx
+!/src/GetInvolvedPage.tsx
+!/src/contact.ts
+!/get-involved/
+/get-involved/*
+!/get-involved/index.html
 !/src/AboutPage.tsx
 !/src/about.ts
 !/about/
