@@ -1,7 +1,8 @@
 import ProjectsPage from './ProjectsPage';
 import AboutPage from './AboutPage';
+import GetInvolvedPage from './GetInvolvedPage';
 
-type Page = 'home' | 'projects' | 'about';
+type Page = 'home' | 'projects' | 'about' | 'get-involved';
 
 function Navigation({ page }: { page: Page }) {
   return (
@@ -14,6 +15,7 @@ function Navigation({ page }: { page: Page }) {
           <a href="/" aria-current={page === 'home' ? 'page' : undefined}>Home</a>
           <a href="/projects/" aria-current={page === 'projects' ? 'page' : undefined}>Projects</a>
           <a href="/about/" aria-current={page === 'about' ? 'page' : undefined}>About</a>
+          <a href="/get-involved/" aria-current={page === 'get-involved' ? 'page' : undefined}>Get involved</a>
           <a href="/#community">Our community</a>
         </nav>
         <span className="header-location">York University<br /><span>Toronto, Canada</span></span>
@@ -31,9 +33,9 @@ function Hero() {
           <h1 id="hero-title">Build. Test.<br />Learn. Fly.</h1>
           <p className="hero-description">Aerospace ideas.<br />Real hands-on experience.</p>
           <p className="body-copy">We’re York University students learning to design, build and test unmanned aircraft—starting with FPV drones.</p>
-          <div className="future-actions" aria-label="Upcoming website features">
+          <div className="future-actions" aria-label="Explore and connect">
             <a className="projects-cta" href="/projects/">Explore Projects</a>
-            <p><strong>Join SpaceZ</strong><span>Coming soon</span></p>
+            <a className="join-cta" href="/get-involved/">Join SpaceZ</a>
           </div>
         </div>
         <figure className="drone-photo">
@@ -65,15 +67,23 @@ function Community() {
 
 export default function App() {
   const path = window.location.pathname;
-  const page: Page = /^\/projects(?:\/|\/index\.html)?$/.test(path) ? 'projects'
-    : /^\/about(?:\/|\/index\.html)?$/.test(path) ? 'about' : 'home';
+  const route = path.replace(/\/index\.html$/, '').replace(/\/$/, '');
+  const page: Page = route === '/projects' ? 'projects'
+    : route === '/about' ? 'about'
+    : route === '/get-involved' ? 'get-involved' : 'home';
+  const pages = {
+    home: <><Hero /><Community /></>,
+    projects: <ProjectsPage />,
+    about: <AboutPage />,
+    'get-involved': <GetInvolvedPage />,
+  };
   const mainId = page === 'home' ? 'home' : 'main-content';
   return (
     <>
       <a className="skip-link" href={`#${mainId}`}>Skip to main content</a>
       <Navigation page={page} />
-      <main id={mainId} tabIndex={-1}>{page === 'projects' ? <ProjectsPage /> : page === 'about' ? <AboutPage /> : <><Hero /><Community /></>}</main>
-      <footer className="site-footer"><div className="container footer-inner"><strong>SpaceZ Aerospace</strong><p>Student-led engineering at York University. Joining information is being prepared.</p></div></footer>
+      <main id={mainId} tabIndex={-1}>{pages[page]}</main>
+      <footer className="site-footer"><div className="container footer-inner"><strong>SpaceZ Aerospace</strong><p>Student-led engineering at York University. Build. Test. Learn. Fly.</p></div></footer>
     </>
   );
 }

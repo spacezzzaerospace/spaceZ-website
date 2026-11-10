@@ -9,6 +9,7 @@ export default defineConfig({
         home: fileURLToPath(new URL('./index.html', import.meta.url)),
         projects: fileURLToPath(new URL('./projects/index.html', import.meta.url)),
         about: fileURLToPath(new URL('./about/index.html', import.meta.url)),
+        getInvolved: fileURLToPath(new URL('./get-involved/index.html', import.meta.url)),
       },
     },
   },
