@@ -66,7 +66,6 @@ h2 { font-size: clamp(38px, 4.4vw, 60px); line-height: 1.08; }
   .header-location { display: none; }
 }
 @media (max-width: 600px) {
-  .header-inner { min-height: auto; padding-block: 18px; flex-wrap: wrap; gap: 12px; }
   .brand img { width: 150px; }
   nav { width: 100%; gap: 28px; }
   .club-intro { font-size: 12px; }
@@ -116,7 +115,6 @@ nav a[aria-current="page"] { text-decoration-thickness: 2px; color: var(--navy);
 }
 @media (max-width: 600px) {
   .project-index { width: auto; }
-  .header-inner nav { gap: 22px; flex-wrap: wrap; }
   .projects-return { flex-direction: column; align-items: flex-start; gap: 8px; }
   .project-status { max-width: 100%; }
 }
@@ -174,18 +172,8 @@ nav a[aria-current="page"] { text-decoration-thickness: 2px; color: var(--navy);
   .about-number { margin-bottom: 16px; }
 }
 
-/* Shared navigation stays visible and wraps into generous mobile touch targets. */
-.header-inner nav { flex-wrap: wrap; gap: 8px 24px; }
-.header-inner nav a[aria-current="page"] { text-decoration-thickness: 3px; }
 .future-actions { flex-wrap: wrap; gap: 16px 28px; }
 .join-cta { min-height: 48px; display: inline-flex; align-items: center; font-weight: 600; }
-@media (max-width: 1100px) { .header-location { display: none; } }
-@media (max-width: 600px) {
-  .header-inner nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; }
-  .header-inner nav a { min-height: 44px; padding-inline: 10px; }
-  .header-inner nav a[aria-current="page"] { background: var(--mist); border-radius: 4px; }
-  .header-inner nav a:last-child { grid-column: 1 / -1; }
-}
 /* Get involved: direct contact, clear destinations and a quiet technical accent. */
 .involve-hero { padding-block: clamp(48px, 7vw, 96px); background: var(--mist); }
 .involve-hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
@@ -225,4 +213,27 @@ nav a[aria-current="page"] { text-decoration-thickness: 2px; color: var(--navy);
   .involve-section-heading, .involve-email, .involve-socials { grid-template-columns: 1fr; gap: 24px; }
   .involve-socials { gap: 0; }
   .involve-lead { font-size: 22px; }
+}
+
+/* Shared navigation disclosure. Keep the breakpoint aligned with Navigation.tsx. */
+.header-inner { flex-wrap: wrap; gap: 16px 24px; padding-block: 16px; }
+.main-navigation { flex-wrap: wrap; gap: 4px; width: auto; }
+.main-navigation a { padding: 12px 14px; min-height: 48px; text-decoration: none; border-radius: 6px; }
+.main-navigation a:hover { background: var(--mist); text-decoration: underline; }
+.main-navigation a[aria-current="page"] { color: var(--navy); background: var(--mist); text-decoration: underline; text-decoration-thickness: 2px; }
+.main-navigation a:active { background: var(--line); }
+.nav-toggle { display: none; font: inherit; font-size: 15px; font-weight: 600; color: var(--navy); background: white; border: 1px solid var(--line); border-radius: 6px; min-height: 48px; padding: 12px 16px; gap: 16px; align-items: center; cursor: pointer; }
+.nav-toggle:hover, .nav-toggle[aria-expanded="true"] { background: var(--mist); border-color: var(--indigo); }
+.nav-toggle:focus-visible { outline: 3px solid var(--indigo); outline-offset: 4px; }
+@media (max-width: 1100px) { .header-location { display: none; } }
+@media (max-width: 900px) {
+  .header-inner { min-height: 88px; }
+  .brand img { width: 150px; }
+  .nav-toggle { display: inline-flex; margin-left: auto; }
+  .main-navigation { display: none; flex-basis: 100%; padding-top: 12px; border-top: 1px solid var(--line); }
+  .main-navigation.is-open { display: flex; flex-direction: column; gap: 4px; }
+  .main-navigation a { width: 100%; min-height: 48px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .main-navigation a, .nav-toggle { transition: background-color 150ms ease, border-color 150ms ease; }
 }
