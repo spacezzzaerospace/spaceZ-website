@@ -1,3 +1,4 @@
+import Reveal from './Reveal';
 import ProjectsPage from './ProjectsPage';
 import AboutPage from './AboutPage';
 import GetInvolvedPage from './GetInvolvedPage';
@@ -18,8 +19,10 @@ function Hero() {
           </div>
         </div>
         <figure className="drone-photo">
-          <img src="/assets/spacez-drone-1280.webp" srcSet="/assets/spacez-drone-640.webp 640w, /assets/spacez-drone-1280.webp 1280w" sizes="(max-width: 900px) 90vw, (min-width: 1440px) 650px, 48vw" alt="SpaceZ quadcopter on a workbench, with its battery, wiring and frame visible." width="1280" height="721" fetchPriority="high" />
-          <figcaption><strong>From our workbench</strong><span>Ideas take shape through building and testing.</span></figcaption>
+          <div className="hero-image-window">
+            <img src="/assets/spacez-flight-720.webp" srcSet="/assets/spacez-flight-400.webp 400w, /assets/spacez-flight-720.webp 720w" sizes="(max-width: 900px) 90vw, 42vw" alt="A radio controller in the foreground, with a SpaceZ drone held against the evening sky." width="720" height="949" fetchPriority="high" />
+          </div>
+          <figcaption><strong>A different perspective</strong><span>Build. Test. Learn. Fly.</span></figcaption>
         </figure>
       </div>
       <div className="container hero-footnote"><span>A student aerospace club at York University</span><a href="#community">Meet the community</a></div>
@@ -31,14 +34,24 @@ function Community() {
   return (
     <section id="community" className="community" aria-labelledby="community-title" tabIndex={-1}>
       <div className="container">
-        <div className="community-heading">
-          <div><p className="section-label">Our community</p><h2 id="community-title">Different skills.<br />Shared curiosity.</h2></div>
+        <Reveal className="community-heading" variant="lines">
+          <div><p className="section-label">Our community</p><h2 id="community-title"><span className="reveal-mask"><span className="reveal-line">Different skills.</span></span><span className="reveal-mask"><span className="reveal-line">Shared curiosity.</span></span></h2></div>
           <p className="body-copy">SpaceZ brings students together to learn through real engineering projects. There’s room for new perspectives, practical skills and the willingness to try.</p>
+        </Reveal>
+        <div className="community-gallery">
+          <figure className="community-photo">
+            <div className="community-image-window"><img src="/assets/spacez-assembly-720.webp" srcSet="/assets/spacez-assembly-400.webp 400w, /assets/spacez-assembly-720.webp 720w" sizes="(max-width: 600px) 90vw, 54vw" alt="Hands working on a SpaceZ drone frame, surrounded by tools and components." width="720" height="959" loading="lazy" /></div>
+            <figcaption><strong>Learning through building</strong><span>At the SpaceZ workbench.</span></figcaption>
+          </figure>
+          <figure className="community-photo">
+            <div className="community-image-window"><img src="/assets/spacez-electronics-720.webp" srcSet="/assets/spacez-electronics-400.webp 400w, /assets/spacez-electronics-720.webp 720w" sizes="(max-width: 600px) 90vw, 54vw" alt="Hands soldering drone electronics on a blue work mat, with wiring and a motor nearby." width="720" height="1098" loading="lazy" /></div>
+            <figcaption><strong>Making connections</strong><span>Electronics, patience and practice.</span></figcaption>
+          </figure>
         </div>
-        <figure className="community-photo">
-          <img src="/assets/spacez-community-1600.webp" srcSet="/assets/spacez-community-480.webp 480w, /assets/spacez-community-960.webp 960w, /assets/spacez-community-1600.webp 1600w" sizes="(min-width: 1440px) 1280px, 90vw" alt="SpaceZ members gathered in a classroom holding the club banner, with drones on the tables beside them." width="1600" height="1067" loading="lazy" />
-          <figcaption><strong>The people behind SpaceZ</strong><span>Learning together. Building something of our own.</span></figcaption>
-        </figure>
+        <div className="community-return" aria-label="Continue exploring SpaceZ">
+          <a href="/projects/">Explore our projects</a>
+          <a href="/get-involved/">Get involved with SpaceZ</a>
+        </div>
       </div>
     </section>
   );
@@ -61,7 +74,7 @@ export default function App() {
     <>
       <a className="skip-link" href={`#${mainId}`}>Skip to main content</a>
       <Navigation page={page} />
-      <main id={mainId} tabIndex={-1}>{pages[page]}</main>
+      <main id={mainId} className={`site-page ${page === 'home' ? 'homepage' : `${page}-page`}`} tabIndex={-1}>{pages[page]}</main>
       <footer className="site-footer"><div className="container footer-inner"><strong>SpaceZ Aerospace</strong><p>Student-led engineering at York University. Build. Test. Learn. Fly.</p></div></footer>
     </>
   );

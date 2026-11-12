@@ -1,0 +1,30 @@
+/* Native document navigation: ordinary anchors remain the only routing mechanism.
+   The header has its own snapshot; the remaining viewport fades and moves gently.
+   No opt-in for reduced motion; unsupported browsers ignore these rules. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .site-header { view-transition-name: spacez-header; }
+  /* Snapshots are decorative; rapid clicks still reach the real navigation. */
+  ::view-transition { pointer-events: none; }
+  ::view-transition-group(root) { animation-duration: 280ms; }
+  ::view-transition-old(root) { animation: page-leave 140ms ease-out both; }
+  ::view-transition-new(root) { animation: page-enter 280ms cubic-bezier(.2,.7,.3,1) both; }
+  ::view-transition-group(spacez-header) { animation: none; }
+  ::view-transition-old(spacez-header) { display: none; }
+  ::view-transition-new(spacez-header) { animation: none; }
+  .site-header .main-navigation a, .site-header .nav-toggle {
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  }
+}
+@keyframes page-leave { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.site-header .main-navigation a:hover { text-decoration: none; box-shadow: inset 0 -2px var(--indigo); }
+.site-header .main-navigation a:active, .site-header .nav-toggle:active { background: var(--line); box-shadow: inset 0 0 0 1px var(--indigo); }
+.site-header .main-navigation a:focus-visible { box-shadow: inset 0 -2px var(--indigo); }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none; }
+}

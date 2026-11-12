@@ -1,9 +1,10 @@
+import Reveal from './Reveal';
 import { clubEmail, socialLinks } from './contact';
 
 export default function GetInvolvedPage() {
   return (
     <>
-      <section className="involve-hero" aria-labelledby="involve-title">
+      <section className="involve-hero page-hero" aria-labelledby="involve-title">
         <div className="container involve-hero-grid">
           <div>
             <p className="section-label">Get involved &amp; contact</p>
@@ -24,7 +25,7 @@ export default function GetInvolvedPage() {
       <section className="involve-contact" id="contact" tabIndex={-1} aria-labelledby="contact-title">
         <div className="container">
           <div className="involve-section-heading">
-            <div><p className="section-label">Let’s connect</p><h2 id="contact-title">Start here.</h2></div>
+            <Reveal variant="focus"><p className="section-label">Let’s connect</p><h2 id="contact-title">Start here.</h2></Reveal>
             <p className="body-copy">For joining questions or general enquiries, email the club. You can also find SpaceZ on our official social channels.</p>
           </div>
           <div className="involve-email">
@@ -41,9 +42,11 @@ export default function GetInvolvedPage() {
           <ul className="involve-socials">
             {socialLinks.map(link => (
               <li key={link.name}>
-                <h3><a href={link.href}>{link.name} <span aria-hidden="true">↗</span></a></h3>
-                <p className="involve-social-label">{link.label}</p>
-                <p>{link.description}</p>
+                <a className="contact-channel" href={link.href} aria-label={`${link.name}: ${link.label}`}>
+                  <h3>{link.name} <span aria-hidden="true">↗</span></h3>
+                  <p className="involve-social-label">{link.label}</p>
+                  <p>{link.description}</p>
+                </a>
               </li>
             ))}
           </ul>
@@ -53,7 +56,7 @@ export default function GetInvolvedPage() {
 
       <section className="involve-next" aria-labelledby="involve-next-title">
         <div className="container involve-section-heading">
-          <div><p className="section-label">Get to know SpaceZ</p><h2 id="involve-next-title">See where your curiosity could lead.</h2></div>
+          <Reveal variant="sweep" className="scroll-reveal--closing"><p className="section-label">Get to know SpaceZ</p><h2 id="involve-next-title">See where your curiosity could lead.</h2></Reveal>
           <div>
             <p className="body-copy">Explore our early prototype work and the ideas guiding our student engineering community.</p>
             <div className="involve-next-links"><a href="/projects/">Explore our projects</a><a href="/about/">About SpaceZ</a></div>

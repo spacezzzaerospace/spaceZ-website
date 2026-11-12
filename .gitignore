@@ -56,3 +56,16 @@ dist/
 .codex/
 .agents/
 .aws/
+
+!/src/homepage.css
+!/public/assets/spacez-flight-400.webp
+!/public/assets/spacez-flight-720.webp
+!/public/assets/spacez-assembly-400.webp
+!/public/assets/spacez-assembly-720.webp
+!/public/assets/spacez-electronics-400.webp
+!/public/assets/spacez-electronics-720.webp
+
+!/src/Reveal.tsx
+!/src/sitewide.css
+
+!/src/navigation.css
