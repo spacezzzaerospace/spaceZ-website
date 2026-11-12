@@ -1,28 +1,7 @@
 import ProjectsPage from './ProjectsPage';
 import AboutPage from './AboutPage';
 import GetInvolvedPage from './GetInvolvedPage';
-
-type Page = 'home' | 'projects' | 'about' | 'get-involved';
-
-function Navigation({ page }: { page: Page }) {
-  return (
-    <header className="site-header">
-      <div className="container header-inner">
-        <a className="brand" href="/" aria-label="SpaceZ Aerospace home">
-          <img src="/assets/spacez-official-wordmark.png" alt="SpaceZ Aerospace" width="629" height="240" />
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="/" aria-current={page === 'home' ? 'page' : undefined}>Home</a>
-          <a href="/projects/" aria-current={page === 'projects' ? 'page' : undefined}>Projects</a>
-          <a href="/about/" aria-current={page === 'about' ? 'page' : undefined}>About</a>
-          <a href="/get-involved/" aria-current={page === 'get-involved' ? 'page' : undefined}>Get involved</a>
-          <a href="/#community">Our community</a>
-        </nav>
-        <span className="header-location">York University<br /><span>Toronto, Canada</span></span>
-      </div>
-    </header>
-  );
-}
+import Navigation, { type Page } from './Navigation';
 
 function Hero() {
   return (

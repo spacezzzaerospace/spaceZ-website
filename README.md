@@ -14,7 +14,7 @@ Current features:
 - Working navigation between Home, Projects, About, Get Involved, and the homepage community section.
 - Projects page covering early UAV/FPV prototype work and preparation toward AEAC 2027, with preparation clearly distinguished from confirmed participation.
 - About page with the club’s founding story, values, learning goals and future ambitions.
-- Get Involved & Contact page with official email and social links, plus visible mobile navigation.
+- Get Involved & Contact page with official email and social links, plus a compact mobile navigation menu.
 - Keyboard skip navigation, visible focus indicators, semantic headings, and descriptive image text.
 - Responsive WebP photographs and a locally served SpaceZ logo.
 - Navy and indigo brand colours with light content surfaces.
@@ -60,7 +60,8 @@ Building or previewing does not deploy the website. The package installation con
 
 ```text
 public/assets/       Official logo and optimized club photographs
-src/App.tsx          Navigation, homepage sections, and footer
+src/App.tsx          Page selection, homepage sections, and footer
+src/Navigation.tsx   Shared links and responsive navigation disclosure
 src/ProjectsPage.tsx Projects page introduction and project list
 src/ProjectSection.tsx Reusable project presentation
 src/projects.ts      Typed project content and approved status descriptions
@@ -82,6 +83,8 @@ tsconfig.json        TypeScript settings
 ```
 
 ## Contributing
+
+Shared navigation lives in `src/Navigation.tsx`. Add links only when their approved destination exists. Mobile navigation uses a native button with `aria-expanded` and `aria-controls`; Escape returns focus to the button, and Tab follows the normal page order. Keep the 900px breakpoint aligned between the component and CSS. When changing navigation, check every page, keyboard controls and resizing across that breakpoint.
 
 Update contact destinations in `src/contact.ts` after confirmation from the club. Verify external links in a browser, especially the Discord invite, and distinguish sign-in screens from confirmed profile content. The email link opens the visitor’s configured email app. Social links use ordinary same-tab navigation. Confirm the approved registration destination before adding it.
 
