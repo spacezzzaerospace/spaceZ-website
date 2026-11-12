@@ -1,13 +1,14 @@
+import Reveal from './Reveal';
 import { learningAreas, values } from './about';
 
 function SectionHeading({ id, label, title }: { id: string; label: string; title: string }) {
-  return <div><p className="section-label">{label}</p><h2 id={id}>{title}</h2></div>;
+  return <Reveal className={id === 'vision-title' ? 'scroll-reveal--closing' : ''} variant={id === 'origins-title' || id === 'vision-title' ? 'sweep' : 'focus'}><p className="section-label">{label}</p><h2 id={id}>{title}</h2></Reveal>;
 }
 
 export default function AboutPage() {
   return (
     <>
-      <section className="about-intro" aria-labelledby="about-title">
+      <section className="about-intro page-hero" aria-labelledby="about-title">
         <div className="container">
           <p className="section-label">About SpaceZ / York University</p>
           <h1 id="about-title">Curiosity brings us together.<br /><span>Engineering takes us further.</span></h1>
@@ -18,7 +19,7 @@ export default function AboutPage() {
               <div className="about-founding"><span>Established</span><strong><time dateTime="2026-09-02">2 September 2026</time></strong><span>York University · Toronto, Canada</span></div>
             </div>
             <figure className="about-photo">
-              <img src="/assets/spacez-community-960.webp" srcSet="/assets/spacez-community-480.webp 480w, /assets/spacez-community-960.webp 960w, /assets/spacez-community-1600.webp 1600w" sizes="(max-width: 900px) 90vw, (min-width: 1440px) 720px, 54vw" width="1600" height="1067" fetchPriority="high" alt="SpaceZ members in a classroom with the club banner and drones on nearby tables." />
+              <div className="motion-image"><img src="/assets/spacez-community-960.webp" srcSet="/assets/spacez-community-480.webp 480w, /assets/spacez-community-960.webp 960w, /assets/spacez-community-1600.webp 1600w" sizes="(max-width: 900px) 90vw, (min-width: 1440px) 720px, 54vw" width="1600" height="1067" fetchPriority="high" alt="SpaceZ members in a classroom with the club banner and drones on nearby tables." /></div>
               <figcaption>Different backgrounds. A shared place to build and learn.</figcaption>
             </figure>
           </div>
@@ -38,7 +39,7 @@ export default function AboutPage() {
       <section className="about-learning about-section" aria-labelledby="learning-title">
         <div className="container">
           <div className="about-section-heading"><SectionHeading id="learning-title" label="Our purpose" title="Learn beyond the coursework." /><p className="body-copy">We aim to make practical engineering accessible across disciplines and experience levels. These are learning directions we want to develop, not separate programs already operating.</p></div>
-          <div className="about-learning-grid">{learningAreas.map((area, index) => <div className="about-learning-item" key={area.title}><span className="about-number" aria-hidden="true">0{index + 1}</span><h3>{area.title}</h3><p className="body-copy">{area.description}</p></div>)}</div>
+          <div className="about-learning-grid">{learningAreas.map((area) => <div className="about-learning-item" key={area.title}><h3>{area.title}</h3><p className="body-copy">{area.description}</p></div>)}</div>
         </div>
       </section>
 

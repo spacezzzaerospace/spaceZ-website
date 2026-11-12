@@ -1,13 +1,14 @@
+import Reveal from './Reveal';
 import type { Project } from './projects';
 
 export default function ProjectSection({ project }: { project: Project }) {
   return (
     <article id={project.id} className="project-section" aria-labelledby={`${project.id}-title`} tabIndex={-1}>
       <div className="container">
-        <div className="project-heading">
+        <Reveal className="project-heading">
           <div><p className="section-label">{project.period}</p><h2 id={`${project.id}-title`}>{project.title}</h2></div>
           <span className="project-status">{project.status}</span>
-        </div>
+        </Reveal>
         <div className="project-layout">
           <div className="project-story">
             <h3>{project.summary}</h3>
@@ -18,7 +19,7 @@ export default function ProjectSection({ project }: { project: Project }) {
           <div className="project-evidence">
             {project.image && (
               <figure className="project-photo">
-                <img src={project.image.src} srcSet={project.image.srcSet} sizes="(max-width: 900px) 90vw, (min-width: 1440px) 600px, 45vw" alt={project.image.alt} width="1280" height="721" loading="lazy" />
+                <div className="motion-image"><img src={project.image.src} srcSet={project.image.srcSet} sizes="(max-width: 900px) 90vw, (min-width: 1440px) 600px, 45vw" alt={project.image.alt} width="1280" height="721" loading="lazy" /></div>
                 <figcaption>{project.image.caption}</figcaption>
               </figure>
             )}

@@ -101,3 +101,24 @@ The repository uses an explicit file allowlist in `.gitignore`. Review that list
 ## Ownership and media
 
 SpaceZ Aerospace retains ownership of the website. The logo and photographs are supplied SpaceZ club assets. Existing attribution must be preserved when contributing. Public access to this repository does not itself grant permission to reuse club branding or photographs; no additional asset licence is granted here.
+
+## Homepage visual maintenance
+
+Homepage-specific styles live in `src/homepage.css`. Keep approved image sources and brand colour tokens. The community heading now uses the shared `Reveal` component with its `lines` variant; the old timed community hook has been replaced. Test widths, keyboard links and motion preferences after changes.
+
+The homepage workbench story uses CSS sticky panels: the assembly scene pauses while the electronics scene scrolls over it. This is ordinary page scrolling, with no scroll interception or animation library. Reduced-motion, viewports shorter than 700px, and widths below 360px use static panels. Keep both panels free of interactive controls that could become covered, and check that their contents fit the viewport before extending this pattern. Home uses distinct approved outdoor, assembly and electronics images; Projects and About keep their original photographs.
+
+## Shared visual system and motion
+
+`src/sitewide.css` is the shared visual layer, loaded after the base and homepage styles. It defines the display-font fallback stack, section spacing, page-hero treatment, project layouts, About chronology/values, contact cards and responsive/static alternatives. `src/homepage.css` retains the stacked workbench sequence. Brand colour tokens stay in `src/styles.css`; no remote font or animation package is required.
+
+Use `src/Reveal.tsx` selectively around section headings. Its `lift`, `sweep`, `focus` and `lines` variants use CSS view timelines in `src/sitewide.css`. Scroll position controls progress in both directions; there are no timers, observers or scroll-event handlers. An untransformed wrapper supplies the timeline while its heading moves inside it. Closing sections use a shorter range so text finishes before the footer. Unsupported browsers and reduced-motion preferences receive static content. Direct section anchors and keyboard focus bypass effects. Main page titles remain immediately visible. After changing section length or font sizes, test both scrolling directions and the bottom of each page.
+
+Project and About photo windows use CSS view timelines when supported. Older browsers show the static image. Sticky evidence/values headings require a sufficiently large viewport and no reduced-motion preference. Keep controls outside overlapping panels. Test desktop, mobile, short screens, keyboard access and motion preferences after layout changes. Verified project/about/contact content remains centralized in its existing data files.
+
+
+## Page navigation transitions
+
+The four HTML entry points load `src/navigation.css` directly, so the native cross-document opt-in exists before first paint. Ordinary links still navigate; there is no routing library or click delay. Supporting browsers fade the viewport over 280ms with a 12px entrance, while a separately named header snapshot stays stationary. Reduced-motion users get ordinary navigation; unsupported browsers ignore the enhancement. Page reloads and same-document anchors are intentionally not page transitions.
+
+The application module is render-blocking in the document head, and the initial React mount uses `flushSync` so the browser cannot capture an empty application. This synchronizes only the initial mount, not later updates. Keep the bundle small and test cold-load performance before launch: rendering waits for the application module, with no artificial timer. Preserve unique transition names and verify header height, mobile menu closure, history traversal, anchors and direct refreshes after changes.
