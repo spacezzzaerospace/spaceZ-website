@@ -1,3 +1,4 @@
+import TeamPage from './TeamPage';
 import Reveal from './Reveal';
 import ProjectsPage from './ProjectsPage';
 import AboutPage from './AboutPage';
@@ -61,11 +62,13 @@ export default function App() {
   const path = window.location.pathname;
   const route = path.replace(/\/index\.html$/, '').replace(/\/$/, '');
   const page: Page = route === '/projects' ? 'projects'
+    : route === '/team' ? 'team'
     : route === '/about' ? 'about'
     : route === '/get-involved' ? 'get-involved' : 'home';
   const pages = {
     home: <><Hero /><Community /></>,
     projects: <ProjectsPage />,
+    team: <TeamPage />,
     about: <AboutPage />,
     'get-involved': <GetInvolvedPage />,
   };

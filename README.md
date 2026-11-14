@@ -92,7 +92,7 @@ For About content, edit the values and learning areas in `src/about.ts`; the int
 
 Project information lives in `src/projects.ts`. To add an approved project, add a complete entry with a unique `id`; `ProjectsPage` generates its section and internal navigation. The optional image field supports projects without approved photography. Keep completed work, planned work, and unconfirmed participation clearly separated.
 
-Home (`/`), Projects (`/projects/`), About (`/about/`) and Get Involved (`/get-involved/`) use ordinary browser links and share React components. Vite builds all four HTML documents, so direct visits and refreshes work on a static server that supports directory index files. A future host must serve the site from its domain root or have the paths adapted before deployment. No routing library is required for these four pages.
+Home (`/`), Projects (`/projects/`), About (`/about/`) and Get Involved (`/get-involved/`) use ordinary browser links and share React components. Vite builds all five HTML documents, so direct visits and refreshes work on a static server that supports directory index files. A future host must serve the site from its domain root or have the paths adapted before deployment. No routing library is required for these five pages.
 
 Keep changes focused and explain their purpose. Run `pnpm build` and check the affected layout on desktop and mobile before submitting changes. Preserve keyboard navigation, readable contrast, image descriptions, and the club's approved branding. Confirm club facts and technical claims with the appropriate SpaceZ team before adding them.
 
@@ -119,6 +119,11 @@ Project and About photo windows use CSS view timelines when supported. Older bro
 
 ## Page navigation transitions
 
-The four HTML entry points load `src/navigation.css` directly, so the native cross-document opt-in exists before first paint. Ordinary links still navigate; there is no routing library or click delay. Supporting browsers fade the viewport over 280ms with a 12px entrance, while a separately named header snapshot stays stationary. Reduced-motion users get ordinary navigation; unsupported browsers ignore the enhancement. Page reloads and same-document anchors are intentionally not page transitions.
+The five HTML entry points load `src/navigation.css` directly, so the native cross-document opt-in exists before first paint. Ordinary links still navigate; there is no routing library or click delay. Supporting browsers fade the viewport over 280ms with a 12px entrance, while a separately named header snapshot stays stationary. Reduced-motion users get ordinary navigation; unsupported browsers ignore the enhancement. Page reloads and same-document anchors are intentionally not page transitions.
 
 The application module is render-blocking in the document head, and the initial React mount uses `flushSync` so the browser cannot capture an empty application. This synchronizes only the initial mount, not later updates. Keep the bundle small and test cold-load performance before launch: rendering waits for the application module, with no artificial timer. Preserve unique transition names and verify header height, mobile menu closure, history traversal, anchors and direct refreshes after changes.
+
+
+## Team maintenance
+
+The Team page (`/team/`) has its own HTML build entry. Edit approved member details in `src/team.ts`; the executive array and separate developer entry represent different groups. `src/TeamPage.tsx` renders the data and shared portrait presentation; `src/team.css` holds scoped styles. Preserve exact filename case, photo approval and descriptive alt text. The landscape option uses a subject-centred CSS crop; verify the cyclist remains visible. Optional approved email addresses render only when supplied. Profile text remains readable independently of motion; CSS view timelines and reduced-motion alternatives enhance imagery. Rebuild and check desktop/mobile cropping, section links and navigation after changes.

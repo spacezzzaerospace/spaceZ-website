@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-export type Page = 'home' | 'projects' | 'about' | 'get-involved';
+export type Page = 'team' | 'home' | 'projects' | 'about' | 'get-involved';
 
 const links: { page?: Page; href: string; label: string }[] = [
   { page: 'home', href: '/', label: 'Home' },
   { page: 'projects', href: '/projects/', label: 'Projects' },
   { page: 'about', href: '/about/', label: 'About' },
+  { page: 'team', href: '/team/', label: 'Team' },
   { page: 'get-involved', href: '/get-involved/', label: 'Get involved' },
   { href: '/#community', label: 'Our community' },
 ];

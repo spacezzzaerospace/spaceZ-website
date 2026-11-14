@@ -69,3 +69,19 @@ dist/
 !/src/sitewide.css
 
 !/src/navigation.css
+
+!/src/TeamPage.tsx
+!/src/team.ts
+!/src/team.css
+!/team/
+/team/*
+!/team/index.html
+!/public/assets/team/
+/public/assets/team/*
+!/public/assets/team/DSC07726.JPG
+!/public/assets/team/IMG_8285.jpg
+!/public/assets/team/DSC07755.JPG
+!/public/assets/team/DSC07735.JPG
+!/public/assets/team/IMG_8293.jpg
+!/public/assets/team/DSC07749.JPG
+!/public/assets/team/DSC07763.JPG
