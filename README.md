@@ -6,15 +6,16 @@ The website for SpaceZ Aerospace, a student-led aerospace and engineering club a
 
 ## Purpose and current status
 
-This project introduces the club, its practical engineering work, and its student community. The current version includes Home, Projects, About and Get Involved pages, with authentic SpaceZ photography and official branding.
+This project introduces the club, its practical engineering work, and its student community. The current version includes all five pages: Home, Projects, About, Get Involved, and Team, with authentic SpaceZ photography and official branding.
 
 Current features:
 
 - Responsive homepage with a drone-focused introduction and dedicated community section.
-- Working navigation between Home, Projects, About, Get Involved, and the homepage community section.
+- Working navigation between Home, Projects, About, Get Involved, Team, and the homepage community section.
 - Projects page covering early UAV/FPV prototype work and preparation toward AEAC 2027, with preparation clearly distinguished from confirmed participation.
 - About page with the club’s founding story, values, learning goals and future ambitions.
 - Get Involved & Contact page with official email and social links, plus a compact mobile navigation menu.
+- Team page with six executive profiles and a separate Software & Digital Development section.
 - Keyboard skip navigation, visible focus indicators, semantic headings, and descriptive image text.
 - Responsive WebP photographs and a locally served SpaceZ logo.
 - Navy and indigo brand colours with light content surfaces.
@@ -69,13 +70,17 @@ src/AboutPage.tsx    About page sections and shared section-heading component
 src/about.ts         Values and learning-area content
 src/GetInvolvedPage.tsx Contact page and social-link presentation
 src/contact.ts       Official email and social destinations
+src/TeamPage.tsx     Team sections and reusable portrait presentation
+src/team.ts          Approved member details and photo mappings
+src/team.css         Team layouts and progressive motion
 src/main.tsx         React entry point
 src/styles.css       Brand palette, typography, and responsive layouts
 index.html           Page document and metadata
 projects/index.html  Projects document and metadata
 about/index.html     About document and metadata
 get-involved/index.html Contact document and metadata
-vite.config.js       Four production page entry points
+team/index.html      Team document and metadata
+vite.config.js       Five production page entry points
 package.json         Dependencies and development commands
 pnpm-lock.yaml       Resolved dependency versions
 pnpm-workspace.yaml  Package installation configuration
@@ -92,7 +97,7 @@ For About content, edit the values and learning areas in `src/about.ts`; the int
 
 Project information lives in `src/projects.ts`. To add an approved project, add a complete entry with a unique `id`; `ProjectsPage` generates its section and internal navigation. The optional image field supports projects without approved photography. Keep completed work, planned work, and unconfirmed participation clearly separated.
 
-Home (`/`), Projects (`/projects/`), About (`/about/`) and Get Involved (`/get-involved/`) use ordinary browser links and share React components. Vite builds all five HTML documents, so direct visits and refreshes work on a static server that supports directory index files. A future host must serve the site from its domain root or have the paths adapted before deployment. No routing library is required for these five pages.
+Home (`/`), Projects (`/projects/`), About (`/about/`), Get Involved (`/get-involved/`), and Team (`/team/`) use ordinary browser links and share React components. Vite builds all five HTML documents, so direct visits and refreshes work on a static server that supports directory index files. A future host must serve the site from its domain root or have the paths adapted before deployment. No routing library is required for these five pages.
 
 Keep changes focused and explain their purpose. Run `pnpm build` and check the affected layout on desktop and mobile before submitting changes. Preserve keyboard navigation, readable contrast, image descriptions, and the club's approved branding. Confirm club facts and technical claims with the appropriate SpaceZ team before adding them.
 
