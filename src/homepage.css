@@ -96,3 +96,14 @@
   .homepage .community-photo { position: static; }
   .homepage .community-gallery { gap: 32px; padding-bottom: 0; }
 }
+
+/* A portrait needs its complete frame, not the landscape panel's cover crop.
+   scale-down also prevents enlarging the supplied 427x640 source. The sticky
+   figure, its height and scroll stacking remain unchanged. */
+.homepage .community-photo--workshop .community-image-window {
+  background: #e0e1ed;
+}
+.homepage .community-photo--workshop img {
+  object-fit: scale-down;
+  object-position: center;
+}
