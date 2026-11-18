@@ -44,8 +44,8 @@ function Community() {
             <div className="community-image-window"><img src="/assets/spacez-assembly-720.webp" srcSet="/assets/spacez-assembly-400.webp 400w, /assets/spacez-assembly-720.webp 720w" sizes="(max-width: 600px) 90vw, 54vw" alt="Hands working on a SpaceZ drone frame, surrounded by tools and components." width="720" height="959" loading="lazy" /></div>
             <figcaption><strong>Learning through building</strong><span>At the SpaceZ workbench.</span></figcaption>
           </figure>
-          <figure className="community-photo">
-            <div className="community-image-window"><img src="/assets/spacez-electronics-720.webp" srcSet="/assets/spacez-electronics-400.webp 400w, /assets/spacez-electronics-720.webp 720w" sizes="(max-width: 600px) 90vw, 54vw" alt="Hands soldering drone electronics on a blue work mat, with wiring and a motor nearby." width="720" height="1098" loading="lazy" /></div>
+          <figure className="community-photo community-photo--workshop">
+            <div className="community-image-window"><img src="/assets/spacez-workshop-427.webp" srcSet="/assets/spacez-workshop-400.webp 400w, /assets/spacez-workshop-427.webp 427w" sizes="(max-width: 600px) min(90vw, 254px), min(54vw, 427px)" alt="A SpaceZ member working on a drone frame during a club workshop." width="427" height="640" loading="lazy" /></div>
             <figcaption><strong>Making connections</strong><span>Electronics, patience and practice.</span></figcaption>
           </figure>
         </div>
